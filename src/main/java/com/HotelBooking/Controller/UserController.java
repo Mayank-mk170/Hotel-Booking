@@ -31,8 +31,10 @@ public class UserController {
         return userService.createUser(userDto);
     }
 
-    //  *********************  SIGNUP AS PROPERTY OWNER  *******************
+                          //  *********************  SIGNUP AS PROPERTY OWNER  *******************
+
     //http://localhost:8080/api/v1/users/owner
+
     @PostMapping("/signup-property-owner")
     public ResponseEntity<?> createPropertyOwnerUser(
             @RequestBody AppUser userDto) {
@@ -45,9 +47,9 @@ public class UserController {
     //http://localhost:8080/login
     @PostMapping("/login")
     public ResponseEntity<?> login(
-            @RequestBody  LoginDto dto
+            @RequestBody  LoginDto loginDto
     ){
-        String token = userService.verifyLogin(dto);
+        String token = userService.verifyLogin(loginDto);
         if(token!=null){
             TokenDto tokenDto = new TokenDto();
             tokenDto.setToken(token);

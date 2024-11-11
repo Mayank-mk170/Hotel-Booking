@@ -56,11 +56,11 @@ public class UserService {
 
     // *************************  LOGIN  *****************
 
-    public String verifyLogin(LoginDto dto){
-        Optional<AppUser> opUser = appUserRepository.findByUsername(dto.getUsername());
+    public String verifyLogin(LoginDto loginDto){
+        Optional<AppUser> opUser = appUserRepository.findByUsername(loginDto.getUsername());
         if(opUser.isPresent()){
             AppUser appUser = opUser.get();
-            if( BCrypt.checkpw(dto.getPassword(), appUser.getPassword())) {
+            if( BCrypt.checkpw(loginDto.getPassword(), appUser.getPassword())) {
                 //generate token
                 String token = jwtService.generateToken(appUser.getUsername());
                 return token;

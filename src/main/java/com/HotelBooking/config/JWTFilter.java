@@ -48,8 +48,8 @@ public class JWTFilter extends OncePerRequestFilter {
             Optional<AppUser> opUsername = appUserRepository.findByUsername(username);
             if(opUsername.isPresent()){
                 AppUser appUser = opUsername.get();
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(appUser,null,null);
-                       // Collections.singleton(new SimpleGrantedAuthority(appUser.getRole() )));
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(appUser,null,
+                       Collections.singleton(new SimpleGrantedAuthority(appUser.getRole() )));
 
                 authenticationToken.setDetails(new WebAuthenticationDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
@@ -58,5 +58,4 @@ public class JWTFilter extends OncePerRequestFilter {
         }
         filterChain.doFilter(request,response);
     }
-
 }
