@@ -18,13 +18,10 @@ import java.util.Objects;
 @RequestMapping("/api/v1/reviews")
 public class ReviewController {
 
-    private PropertyRepository propertyRepository;
-    private ReviewRepository reviewRepository;
+
     private ReviewService reviewService; // Assuming ReviewService is defined elsewhere and provides getUserReviews method.
 
-    public ReviewController(PropertyRepository propertyRepository, ReviewRepository reviewRepository, ReviewService reviewService) {
-        this.propertyRepository = propertyRepository;
-        this.reviewRepository = reviewRepository;
+    public ReviewController( ReviewService reviewService) {
         this.reviewService = reviewService;
     }
 
