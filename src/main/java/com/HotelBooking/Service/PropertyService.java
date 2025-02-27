@@ -77,4 +77,6 @@ public class PropertyService {
 
        return propertyRepository.save(po);
     }
+
+
 }

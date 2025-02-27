@@ -21,12 +21,13 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
+    // Search Hotels
     @GetMapping("/search-hotels")
     public List<Property> searchHotels(
-            @RequestParam String hotel_name
+            @RequestParam (name = "hotel_name") String hotelName
 
     ){
-        return propertyService.searchHotels(hotel_name);
+        return propertyService.searchHotels(hotelName);
     }
 
     @PostMapping("/addProperty")
@@ -42,5 +43,7 @@ public class PropertyController {
         }
         return new ResponseEntity<>(properties, HttpStatus.CREATED);
     }
+
+
 
 }
