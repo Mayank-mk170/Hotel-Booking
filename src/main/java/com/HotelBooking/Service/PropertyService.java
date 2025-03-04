@@ -79,4 +79,8 @@ public class PropertyService {
     }
 
 
+    public Property getPropertyById(long propertyId) {
+        return propertyRepository.findById(propertyId).get();
+
+    }
 }
